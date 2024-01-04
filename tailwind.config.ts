@@ -15,6 +15,8 @@ export default {
         border: "#DFCDC5",
         border_hover: "#C2A499",
         text: "#43302B",
+        timerGood: "#46A758",
+        timerBad: "#E5484D",
       },
     },
   },
