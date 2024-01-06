@@ -3,5 +3,7 @@ export type Country = {
     common: string;
   };
   capital: string;
-  flag: string;
+  flags: {
+    svg: string;
+  };
 };

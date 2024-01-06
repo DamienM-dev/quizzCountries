@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Country } from "~/pages/types";
 
 interface Props {
@@ -10,11 +11,16 @@ const DataCountry: React.FC<Props> = ({ data }) => {
   }
 
   return (
-    <div>
-      <h1>{data[0] ? data[0].name.common : null}</h1>
-
-      <p>Capital: {data[0] ? data[0].capital[0] : null}</p>
-      <p>flag: {data[0] ? data[0].flag : null} </p>
+    <div className="mt-4 flex justify-center">
+      {data[0] && (
+        <Image
+          src={data[0].flags.svg}
+          alt="Drapeau"
+          width={250}
+          height={150}
+          className="rounded-2xl"
+        />
+      )}
     </div>
   );
 };

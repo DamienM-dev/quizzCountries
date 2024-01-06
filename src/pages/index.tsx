@@ -8,13 +8,14 @@ import DataCountry from "~/components/ui/DataCountry";
 import Task from "~/components/ui/Task";
 import Timer from "~/components/ui/Timer";
 import TitleQuizz from "~/components/ui/TitleQuizz";
+import AnswerForm from "~/components/ui/AnswerForm";
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async () => {
   let data: Country[] = [];
 
   try {
     const res = await fetch(
-      "https://restcountries.com/v3.1/name/france?fields=name,capital,flag",
+      "https://restcountries.com/v3.1/name/france?fields=name,capital,flags",
     );
     if (!res.ok) {
       throw new Error(`Erreur HTTP: ${res.status}`);
@@ -43,6 +44,7 @@ const Home: React.FC<{ data: Country[] }> = ({ data }) => {
           </div>
           <Task />
           <DataCountry data={data} />
+          <AnswerForm />
         </main>
       </Layout>
     </>
