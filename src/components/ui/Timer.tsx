@@ -1,25 +1,7 @@
-import { useEffect, useState } from "react";
-
 const timer = "Timer:";
 const seconds = "seconds";
 
-export default function Timer() {
-  const [duration, setDuration] = useState(60);
-
-  useEffect(() => {
-    const intervalTime = setInterval(() => {
-      setDuration((prevDuration) => {
-        if (prevDuration > 0) {
-          return prevDuration - 1;
-        } else {
-          clearInterval(intervalTime);
-          return 0;
-        }
-      });
-    }, 1000);
-    return () => clearInterval(intervalTime);
-  }, []);
-
+export default function Timer({ duration }) {
   return (
     <div>
       <div className="flex text-xl text-text">

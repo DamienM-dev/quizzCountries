@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+import Timer from "./Timer";
+
 const rules = "Give the name and the capital of this country :";
 const answers = [
   {
@@ -9,9 +12,26 @@ const answers = [
 ];
 
 export default function AnswerForm() {
+  const [duration, setDuration] = useState(60);
+
+  function StartTimer() {
+    const intervalTime = setInterval(() => {
+      setDuration((prevDuration) => {
+        if (prevDuration > 0) {
+          return prevDuration - 1;
+        } else {
+          clearInterval(intervalTime);
+          return 0;
+        }
+      });
+    }, 1000);
+    return () => clearInterval(intervalTime);
+  }
+
   return (
     <div className="mt-4">
       <p className="mb-3">{rules}</p>
+      <Timer duration={duration} />
       <form>
         {answers.map((answer, index) => (
           <p key={index}>
@@ -28,14 +48,15 @@ export default function AnswerForm() {
 
         <div className="flex justify-between">
           <p>
-            <input type="submit" value="Start" className=" rounded border-2" />
+            <input
+              type="button"
+              value="Start"
+              className=" rounded border-2"
+              onClick={StartTimer}
+            />
           </p>
           <p className="">
-            <input
-              type="submit"
-              value="Confirm"
-              className=" rounded border-2"
-            />
+            <input type="submit" value="Confirm" />
           </p>
         </div>
       </form>

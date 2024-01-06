@@ -17,6 +17,8 @@ export default {
         text: "#43302B",
         timerGood: "#46A758",
         timerBad: "#E5484D",
+        bg_button: "#7D5E54",
+        border_button: "##D3BCB3",
       },
     },
   },
